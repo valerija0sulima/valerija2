@@ -11,16 +11,36 @@
     <h1>Kvadrātvienādojuma risinātājs</h1>
     <p><input type="text" id="pirmais"> <input type="text" id="otrais"> <input type="text" id="tresais"></p>
     <button type="button" onclick="aprekinat()">Aprēķināt</button>
-    <div class=""></div>
+<p>Saknes:<span  id="rezultats"></span></p>
     <script>
-        var a = pirmais.value;
-        var b = otrais.value;
-        var c = tresais.value;
         function disk(a,b,c) {
             return b*b-4*a*c;
         }
-        function saknes(a,b,d){
-            
+        function saknes(a,b,D){
+        if (D<0){
+            return false;
+        }else{
+            var x1=(-b+Math.sqrt(D))/(2*a);
+            var x2=(-b+Math.sqrt(D)/(2*a));
+            return [x1,x2];
+        }
+        }
+        function aprekinat(){
+        var a = Number(pirmais.value);
+        var b = Number(otrais.value);
+        var c = Number(tresais.value);
+
+        if(isNaN(a)||isNaN(b)||isNaN(c)||a===0){
+            rezultats.innerHTML="Lūdzu ievadi korektus koeficentus!( nevar būt 0)";
+            return;
+        }
+        var atb=saknes(a,b,disks(a,b,c));
+        if(atb===false){
+        rezultats.innerHTML="Kvadrātvienādojumam nav reālu sakņu.";
+    }else{
+        rezultats.innerHTML=`Saknes: x1=${atb[0].toFixed(3)},x2=${atb[1].toFixed(3)}`
+    }
+        
         }
     </script>
 </body>
