@@ -9,7 +9,7 @@
 
 <body>
     <h1>Kvadrātvienādojuma risinātājs</h1>
-    <p><input type="text" id="pirmais"> <input type="text" id="otrais"> <input type="text" id="tresais"></p>
+    <p><input type="number" id="pirmais"> <input type="number" id="otrais"> <input type="number" id="tresais"></p>
     <button type="button" onclick="aprekinat()">Aprēķināt</button>
 <p>Saknes:<span  id="rezultats"></span></p>
     <script>
@@ -34,7 +34,7 @@
             rezultats.innerHTML="Lūdzu ievadi korektus koeficentus!( nevar būt 0)";
             return;
         }
-        var atb=saknes(a,b,disks(a,b,c));
+        var atb=saknes(a,b,disk(a,b,c));
         if(atb===false){
         rezultats.innerHTML="Kvadrātvienādojumam nav reālu sakņu.";
     }else{
